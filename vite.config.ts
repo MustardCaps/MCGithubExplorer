@@ -2,21 +2,25 @@ import { fileURLToPath, URL } from "node:url";
 import babel from "@rolldown/plugin-babel";
 import tailwindcss from "@tailwindcss/vite";
 import react, { reactCompilerPreset } from "@vitejs/plugin-react";
+import svgr from "vite-plugin-svgr";
 import { defineConfig } from "vitest/config";
-import svgr from 'vite-plugin-svgr';
-
 
 export default defineConfig({
 	plugins: [
 		react(),
 		babel({ presets: [reactCompilerPreset()] }),
 		tailwindcss(),
-		svgr()
+		svgr(),
 	],
 	resolve: {
 		alias: {
 			"@": fileURLToPath(new URL("./src", import.meta.url)),
-			"@components": fileURLToPath(new URL("./src/components", import.meta.url)),
+			"@components": fileURLToPath(
+				new URL("./src/components", import.meta.url),
+			),
+			"@api": fileURLToPath(new URL("./src/api", import.meta.url)),
+			"@assets": fileURLToPath(new URL("./src/assets", import.meta.url)),
+			"@hooks": fileURLToPath(new URL("./src/hooks", import.meta.url)),
 		},
 	},
 	test: {
