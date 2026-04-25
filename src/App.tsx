@@ -2,14 +2,16 @@ import { useState } from "react";
 import GitHub_Invertocat_White from "@/assets/GitHub_Invertocat_White.svg?react";
 import SearchBar from "@/components/shared/SearchBar";
 import { useGetUser } from "@/hooks/useGetUser";
+import GithubRepoCard from "./components/shared/GithubRepoCard";
+import GithubUserCard from "./components/shared/GithubUserCard";
 
 function App() {
 	const [userData, setUserData] = useState("");
 
 	const { data, isFetching } = useGetUser(userData);
 
-	console.log("userData", userData);
-	console.log("data", data);
+	console.log("user", data?.user);
+	console.log("repos", data?.repos);
 	console.log("isFetching", isFetching);
 
 	return (
@@ -20,6 +22,11 @@ function App() {
 					<h1 className="text-lg">GitHub explorer</h1>
 				</header>
 				<SearchBar setUser={setUserData} />
+				{data?.user && !isFetching && <GithubUserCard />}
+				{!isFetching &&
+					data?.repos?.map((repo) => (
+						<GithubRepoCard key={repo.id} data={repo} />
+					))}
 			</div>
 		</div>
 	);

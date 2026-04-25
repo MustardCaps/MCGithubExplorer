@@ -1,9 +1,10 @@
 import { api } from "@/api/client";
+import type { TGithubRepo, TGithubUser } from "@/types/github";
 
 export const getGitHubUser = async (username: string) => {
 	const [user, repos] = await Promise.all([
-		api.get(`/users/${username}`),
-		api.get(`/users/${username}/repos`),
+		api.get<TGithubUser>(`/users/${username}`),
+		api.get<TGithubRepo[]>(`/users/${username}/repos`),
 	]);
 	return {
 		user: user.data,
