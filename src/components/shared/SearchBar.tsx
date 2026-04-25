@@ -1,30 +1,35 @@
+import { LoaderCircle } from "lucide-react";
 import { useState } from "react";
-import { Combobox, ComboboxInput } from "@/components/ui/Combobox";
+import {
+	Combobox,
+	ComboboxContent,
+	ComboboxEmpty,
+	ComboboxInput,
+	ComboboxItem,
+	ComboboxList,
+} from "@/components/ui/Combobox";
 import useDebounce from "@/hooks/useDebounce";
-import { useGetUser } from "@/hooks/useGetUser";
 import { useSearchSuggestions } from "@/hooks/useSearchSuggestions";
 
-function SearchBar() {
+type ISearchBarParams = {
+	setUser: (data: string) => void;
+};
+
+function SearchBar({ setUser }: ISearchBarParams) {
 	const [query, setQuery] = useState("");
 	const debouncedQuery = useDebounce(query, 400);
 
-	const { isError, data, error, refetch, isFetching } =
-		useSearchSuggestions(debouncedQuery);
-
-	console.log({
-		isError,
-		data,
-		error,
-		refetch,
-		isFetching,
-	});
+	const { data, isFetching } = useSearchSuggestions(debouncedQuery);
 
 	return (
 		<form onSubmit={(e) => e.preventDefault()}>
 			<Combobox
-				items={[]}
+				items={data}
 				value={query}
-				onValueChange={(value) => setQuery(value ?? "")}
+				onValueChange={(value) => {
+					setQuery(value ?? "");
+					setUser(value ?? "");
+				}}
 			>
 				<ComboboxInput
 					placeholder="Type in the name you wish to find"
@@ -32,6 +37,28 @@ function SearchBar() {
 					onChange={(e) => setQuery(e.target.value)}
 					showClear
 				/>
+				<ComboboxContent>
+					{isFetching ? (
+						<div className="flex items-center gap-2 p-2">
+							<LoaderCircle
+								className="size-4 animate-spin text-muted-foreground"
+								aria-hidden="true"
+							/>
+							<span>Searching...</span>
+						</div>
+					) : debouncedQuery ? (
+						<ComboboxEmpty>
+							No users found for "{debouncedQuery}".
+						</ComboboxEmpty>
+					) : null}
+					<ComboboxList>
+						{(item) => (
+							<ComboboxItem key={item.id} value={item.login}>
+								{item.login}
+							</ComboboxItem>
+						)}
+					</ComboboxList>
+				</ComboboxContent>
 			</Combobox>
 		</form>
 	);

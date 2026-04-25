@@ -1,7 +1,17 @@
+import { useState } from "react";
 import GitHub_Invertocat_White from "@/assets/GitHub_Invertocat_White.svg?react";
 import SearchBar from "@/components/shared/SearchBar";
+import { useGetUser } from "@/hooks/useGetUser";
 
 function App() {
+	const [userData, setUserData] = useState("");
+
+	const { data, isFetching } = useGetUser(userData);
+
+	console.log("userData", userData);
+	console.log("data", data);
+	console.log("isFetching", isFetching);
+
 	return (
 		<div className="min-h-screen bg-background text-foreground p-8">
 			<div className="max-w-2xl mx-auto mt-3">
@@ -9,7 +19,7 @@ function App() {
 					<GitHub_Invertocat_White className="h-7 w-7" />
 					<h1 className="text-lg">GitHub explorer</h1>
 				</header>
-				<SearchBar />
+				<SearchBar setUser={setUserData} />
 			</div>
 		</div>
 	);
