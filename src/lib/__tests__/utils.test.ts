@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { cn } from "@/lib/utils";
+import { cn, getLanguageColor } from "@/lib/utils";
 
 describe("cn", () => {
 	it("merges class names", () => {
@@ -21,5 +21,20 @@ describe("cn", () => {
 		expect(cn("base", active && "active", disabled && "disabled")).toBe(
 			"base active",
 		);
+	});
+});
+
+describe("getLanguageColor", () => {
+	it("returns the correct color for a known language", () => {
+		expect(getLanguageColor("JavaScript")).toBe("#f1e05a");
+		expect(getLanguageColor("TypeScript")).toBe("#3178c6");
+	});
+
+	it("returns the fallback color for an unknown language", () => {
+		expect(getLanguageColor("Brainfuck")).toBe("#888");
+	});
+
+	it("returns the fallback color when language is null", () => {
+		expect(getLanguageColor(null)).toBe("#888");
 	});
 });

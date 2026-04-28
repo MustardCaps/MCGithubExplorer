@@ -38,4 +38,13 @@ type TGithubRepo = {
 	license: { name: string } | null;
 };
 
-export type { TGithubRepo, TGithubUser };
+type TGithubSearchUser = {
+	id: number;
+	login: string;
+	avatar_url: string;
+	html_url: string;
+	type: string;
+	score: number;
+};
+
+export type { TGithubRepo, TGithubSearchUser, TGithubUser };

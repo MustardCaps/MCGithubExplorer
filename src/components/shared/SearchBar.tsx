@@ -54,8 +54,8 @@ function SearchBar({ setUser }: ISearchBarParams) {
 							</ComboboxEmpty>
 						) : null}
 						<ComboboxList>
-							{({ id, login, avatar_url, name }) => {
-								const initials = name?.slice(0, 2) ?? login.slice(0, 2);
+							{({ id, login, avatar_url }) => {
+								const initials = login.slice(0, 2);
 								return (
 									<ComboboxItem key={id} value={login}>
 										<Avatar className="size-8 mr-2">

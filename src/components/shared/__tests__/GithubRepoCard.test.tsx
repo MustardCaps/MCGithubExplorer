@@ -26,8 +26,50 @@ const baseRepo: TGithubRepo = {
 };
 
 describe("GithubRepoCard", () => {
-	it("renders without crashing", () => {
+	it("has correct aria-label on the region", () => {
 		render(<GithubRepoCard data={baseRepo} />);
-		expect(screen.getByText("foo")).toBeInTheDocument();
+		expect(
+			screen.getByRole("region", { name: "react repository" }),
+		).toBeInTheDocument();
+	});
+
+	it("renders the repo name as a link", () => {
+		render(<GithubRepoCard data={baseRepo} />);
+		const link = screen.getByRole("link", { name: /react/ });
+		expect(link).toHaveAttribute("href", "https://github.com/gaearon/react");
+		expect(link).toHaveAttribute("target", "_blank");
+	});
+
+	it("shows description when present", () => {
+		render(<GithubRepoCard data={baseRepo} />);
+		expect(
+			screen.getByText("A JavaScript library for building user interfaces"),
+		).toBeInTheDocument();
+	});
+
+	it("hides description when null", () => {
+		render(<GithubRepoCard data={{ ...baseRepo, description: null }} />);
+		expect(
+			screen.queryByText("A JavaScript library for building user interfaces"),
+		).not.toBeInTheDocument();
+	});
+
+	it("shows language when present", () => {
+		render(<GithubRepoCard data={baseRepo} />);
+		expect(screen.getByText("JavaScript")).toBeInTheDocument();
+	});
+
+	it("hides language when null", () => {
+		render(<GithubRepoCard data={{ ...baseRepo, language: null }} />);
+		expect(screen.queryByText("JavaScript")).not.toBeInTheDocument();
+	});
+
+	it("language dot is hidden from assistive technology", () => {
+		render(<GithubRepoCard data={baseRepo} />);
+		const dot = screen
+			.getByText("JavaScript")
+			.closest("p")
+			?.querySelector("[aria-hidden='true']");
+		expect(dot).toBeInTheDocument();
 	});
 });
