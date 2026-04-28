@@ -1,9 +1,10 @@
 import { useState } from "react";
 import GitHub_Invertocat_White from "@/assets/GitHub_Invertocat_White.svg?react";
+import GithubRepoCard from "@/components/shared/GithubRepoCard";
+import GithubUserCard from "@/components/shared/GithubUserCard";
 import SearchBar from "@/components/shared/SearchBar";
+import Spinner from "@/components/ui/spinner";
 import { useGetUser } from "@/hooks/useGetUser";
-import GithubRepoCard from "./components/shared/GithubRepoCard";
-import GithubUserCard from "./components/shared/GithubUserCard";
 
 function App() {
 	const [userData, setUserData] = useState("");
@@ -22,11 +23,19 @@ function App() {
 					<h1 className="text-lg">GitHub explorer</h1>
 				</header>
 				<SearchBar setUser={setUserData} />
-				{data?.user && !isFetching && <GithubUserCard />}
-				{!isFetching &&
-					data?.repos?.map((repo) => (
-						<GithubRepoCard key={repo.id} data={repo} />
-					))}
+				{!isFetching ? (
+					<>
+						{data?.user && <GithubUserCard user={data.user} />}
+						{data?.repos?.map((repo) => (
+							<GithubRepoCard key={repo.id} data={repo} />
+						))}
+					</>
+				) : (
+					<div className="flex flex-col items-center justify-center gap-2 mt-6">
+						<p>Loading data...</p>
+						<Spinner className="size-8" />
+					</div>
+				)}
 			</div>
 		</div>
 	);

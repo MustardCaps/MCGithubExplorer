@@ -14,7 +14,7 @@ interface IGithugRepoCardProps {
 }
 
 function GithubRepoCard({ data }: IGithugRepoCardProps) {
-	return <Card>foo</Card>;
+	return <Card className="mt-4 p-4">foo</Card>;
 }
 
 GithubRepoCard.displayName = "GithubRepoCard";

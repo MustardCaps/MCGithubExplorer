@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/Combobox";
 import useDebounce from "@/hooks/useDebounce";
 import { useSearchSuggestions } from "@/hooks/useSearchSuggestions";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/Avatar";
 
 type ISearchBarParams = {
 	setUser: (data: string) => void;
@@ -37,28 +38,37 @@ function SearchBar({ setUser }: ISearchBarParams) {
 					onChange={(e) => setQuery(e.target.value)}
 					showClear
 				/>
-				<ComboboxContent>
-					{isFetching ? (
-						<div className="flex items-center gap-2 p-2">
-							<LoaderCircle
-								className="size-4 animate-spin text-muted-foreground"
-								aria-hidden="true"
-							/>
-							<span>Searching...</span>
-						</div>
-					) : debouncedQuery ? (
-						<ComboboxEmpty>
-							No users found for "{debouncedQuery}".
-						</ComboboxEmpty>
-					) : null}
-					<ComboboxList>
-						{(item) => (
-							<ComboboxItem key={item.id} value={item.login}>
-								{item.login}
-							</ComboboxItem>
-						)}
-					</ComboboxList>
-				</ComboboxContent>
+				{debouncedQuery && (
+					<ComboboxContent>
+						{isFetching ? (
+							<div className="flex items-center gap-2 p-2">
+								<LoaderCircle
+									className="size-4 animate-spin text-muted-foreground"
+									aria-hidden="true"
+								/>
+								<span>Searching...</span>
+							</div>
+						) : debouncedQuery ? (
+							<ComboboxEmpty>
+								No users found for "{debouncedQuery}".
+							</ComboboxEmpty>
+						) : null}
+						<ComboboxList>
+							{({ id, login, avatar_url, name }) => {
+								const initials = name?.slice(0, 2) ?? login.slice(0, 2);
+								return (
+									<ComboboxItem key={id} value={login}>
+										<Avatar className="size-8 mr-2">
+											<AvatarImage src={avatar_url} alt={initials} />
+											<AvatarFallback aria-hidden>{initials}</AvatarFallback>
+										</Avatar>
+										{login}
+									</ComboboxItem>
+								);
+							}}
+						</ComboboxList>
+					</ComboboxContent>
+				)}
 			</Combobox>
 		</form>
 	);
