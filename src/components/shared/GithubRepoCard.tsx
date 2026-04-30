@@ -4,12 +4,12 @@ import { getLanguageColor } from "@/lib/utils";
 import type { TGithubRepo } from "@/types/github";
 import { Badge } from "../ui/badge";
 
-interface IGithugRepoCardProps {
+interface IGithubRepoCardProps {
 	data: TGithubRepo;
 }
 function GithubRepoCard({
 	data: { name, html_url, description, language, stargazers_count, license },
-}: IGithugRepoCardProps) {
+}: IGithubRepoCardProps) {
 	return (
 		<Card className="mt-4" role="article" aria-label={`${name} repository`}>
 			<CardContent className="flex gap-2">
