@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">73.77% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>61/61</span>
+                <span class='fraction'>45/61</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">96.55% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>29/29</span>
+                <span class='fraction'>28/29</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -139,40 +139,40 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-yes">27x</span>
-<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">18x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">18x</span>
-<span class="cline-any cline-yes">18x</span>
-<span class="cline-any cline-yes">18x</span>
-<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">27x</span>
-<span class="cline-any cline-yes">18x</span>
-<span class="cline-any cline-yes">27x</span>
 <span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">18x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">27x</span>
-<span class="cline-any cline-yes">18x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">27x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">18x</span>
-<span class="cline-any cline-yes">45x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">27x</span>
-<span class="cline-any cline-yes">27x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -197,40 +197,40 @@ function GithubUserCard({ user }: IGithugRepoCardProps) {
 		followers,
 		following,
 	} = user;<span class="branch-1 cbranch-no" title="branch not covered" ></span>
-	const initials = name?.slice(0, 2) ?? login.slice(0, 2)<span class="missing-if-branch" title="else path not taken" >E</span>;
+	const initials = name?.slice(0, 2) ?? login.slice(0, 2)<span class="cstat-no" title="statement not covered" ><span class="missing-if-branch" title="else path not taken" >E</span>;</span>
 	const userName = name ?? login;
 	const capitalizedUserName =
-		userName.charAt(0).toUpperCase()<span class="missing-if-branch" title="else path not taken" >E</span> + userName.slice(1);
+		userName.charAt(0).toUpperCase()<span class="cstat-no" title="statement not covered" ><span class="missing-if-branch" title="else path not taken" >E</span> + u</span>serName.slice(1);
 	const stats = [
-		{ label: "repos", value: public_repos }<span class="missing-if-branch" title="else path not taken" >E</span>,
-		{ label: "followers", value: followers }<span class="missing-if-branch" title="else path not taken" >E</span>,
-		{ label: "following", value: following }<span class="branch-2 cbranch-no" title="branch not covered" ><span class="branch-1 cbranch-no" title="branch not covered" ><span class="missing-if-branch" title="else path not taken" >E</span>,</span></span>
-	]<span class="missing-if-branch" title="else path not taken" >E</span>;
+		{ label: "repos", value: public_repos }<span class="cstat-no" title="statement not covered" ><span class="missing-if-branch" title="else path not taken" >E</span>,</span>
+		{ label: "followers", value: followers }<span class="cstat-no" title="statement not covered" ><span class="missing-if-branch" title="else path not taken" >E</span>,</span>
+		{ label: "following", value: following }<span class="cstat-no" title="statement not covered" ><span class="branch-2 cbranch-no" title="branch not covered" ><span class="branch-1 cbranch-no" title="branch not covered" ><span class="missing-if-branch" title="else path not taken" >E</span>,</span></span></span>
+	]<span class="cstat-no" title="statement not covered" ><span class="missing-if-branch" title="else path not taken" >E</span>;</span>
 	return (
 		&lt;Card className="mt-4" role="region" aria-label={`${userName} profile`<span class="branch-1 cbranch-no" title="branch not covered" >}&gt;</span>
 			&lt;CardContent&gt;
 				&lt;div className="flex items-start gap-4"&gt;
 					&lt;Avatar className="size-16"&gt;
-						&lt;AvatarImage src={avatar_url} alt={initials} /&gt;<span class="missing-if-branch" title="else path not taken" >E</span>
-						&lt;AvatarFallback aria-hidden&gt;{initials}&lt;/AvatarFallback&gt;<span class="branch-1 cbranch-no" title="branch not covered" ><span class="missing-if-branch" title="else path not taken" >E</span></span>
-					&lt;/Avatar&gt;<span class="missing-if-branch" title="else path not taken" >E</span>
+						&lt;AvatarImage src={avatar_url} alt={initials} /&gt;<span class="cstat-no" title="statement not covered" ><span class="missing-if-branch" title="else path not taken" >E</span></span>
+						&lt;AvatarFallback aria-hidden&gt;{initials}&lt;/AvatarFallback&gt;<span class="cstat-no" title="statement not covered" ><span class="branch-1 cbranch-no" title="branch not covered" ><span class="missing-if-branch" title="else path not taken" >E</span></span></span>
+					&lt;/Avatar&gt;<span class="cstat-no" title="statement not covered" ><span class="missing-if-branch" title="else path not taken" >E</span></span>
 					&lt;div&gt;
-						&lt;h2 className="text-lg font-bold"&gt;{capitalizedUserName}&lt;/h2&gt;<span class="missing-if-branch" title="else path not taken" >E</span>
+						&lt;h2 className="text-lg font-bold"&gt;{capitalizedUserName}&lt;/h2&gt;<span class="cstat-no" title="statement not covered" ><span class="missing-if-branch" title="else path not taken" >E</span></span>
 						&lt;p className="text-sm text-muted-foreground"&gt;
 							{login} {location &amp;&amp; `- ${location}`<span class="branch-1 cbranch-no" title="branch not covered" >}</span>
-						&lt;/p&gt;<span class="missing-if-branch" title="else path not taken" >E</span>
-						{bio &amp;&amp; &lt;p className="text-sm"&gt;{bio}&lt;/p&gt;<span class="missing-if-branch" title="else path not taken" >E</span>}
+						&lt;/p&gt;<span class="cstat-no" title="statement not covered" ><span class="missing-if-branch" title="else path not taken" >E</span></span>
+						{bio &amp;&amp; &lt;p className="text-sm"&gt;{bio}&lt;/p&gt;<span class="cstat-no" title="statement not covered" ><span class="missing-if-branch" title="else path not taken" >E</span>}</span>
 						&lt;div className="text-xs mt-2 text-muted-foreground flex gap-4"&gt;
 							{stats.map(({ label, value }) =&gt; (
 								&lt;span key={label}&gt;
 									&lt;strong className="text-foreground"&gt;{value}&lt;/strong&gt; {label}
 								&lt;/span&gt;
 							))}
-						&lt;/div&gt;<span class="branch-3 cbranch-no" title="branch not covered" ><span class="branch-2 cbranch-no" title="branch not covered" ><span class="branch-1 cbranch-no" title="branch not covered" ><span class="missing-if-branch" title="else path not taken" >E</span></span></span></span>
-					&lt;/div&gt;<span class="branch-1 cbranch-no" title="branch not covered" ><span class="missing-if-branch" title="else path not taken" >E</span></span>
+						&lt;/div&gt;<span class="cstat-no" title="statement not covered" ><span class="branch-3 cbranch-no" title="branch not covered" ><span class="branch-2 cbranch-no" title="branch not covered" ><span class="branch-1 cbranch-no" title="branch not covered" ><span class="missing-if-branch" title="else path not taken" >E</span></span></span></span></span>
+					&lt;/div&gt;<span class="cstat-no" title="statement not covered" ><span class="branch-1 cbranch-no" title="branch not covered" ><span class="missing-if-branch" title="else path not taken" >E</span></span></span>
 				&lt;/div&gt;
-			&lt;/CardContent&gt;<span class="branch-1 cbranch-no" title="branch not covered" ><span class="missing-if-branch" title="else path not taken" >E</span></span>
-		&lt;/Card&gt;<span class="missing-if-branch" title="else path not taken" >E</span>
+			&lt;/CardContent&gt;<span class="cstat-no" title="statement not covered" ><span class="branch-1 cbranch-no" title="branch not covered" ><span class="missing-if-branch" title="else path not taken" >E</span></span></span>
+		&lt;/Card&gt;<span class="cstat-no" title="statement not covered" ><span class="missing-if-branch" title="else path not taken" >E</span></span>
 	);
 }
 &nbsp;
@@ -244,7 +244,7 @@ export default GithubUserCard;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-04-28T03:54:33.232Z
+                at 2026-04-30T01:10:57.312Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

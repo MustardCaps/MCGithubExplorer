@@ -3,17 +3,12 @@ import GitHub_Invertocat_White from "@/assets/GitHub_Invertocat_White.svg?react"
 import GithubRepoCard from "@/components/shared/GithubRepoCard";
 import GithubUserCard from "@/components/shared/GithubUserCard";
 import SearchBar from "@/components/shared/SearchBar";
-import Spinner from "@/components/ui/spinner";
+import Spinner from "@/components/ui/Spinner";
 import { useGetUser } from "@/hooks/useGetUser";
 
 function App() {
 	const [userData, setUserData] = useState("");
-
 	const { data, isFetching } = useGetUser(userData);
-
-	console.log("user", data?.user);
-	console.log("repos", data?.repos);
-	console.log("isFetching", isFetching);
 
 	return (
 		<div className="min-h-screen bg-background text-foreground p-8">

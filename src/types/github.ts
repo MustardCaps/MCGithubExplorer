@@ -35,7 +35,7 @@ type TGithubRepo = {
 	default_branch: string;
 	created_at: string;
 	updated_at: string;
-	license: { name: string } | null;
+	license: { spdx_id: string } | null;
 };
 
 type TGithubSearchUser = {

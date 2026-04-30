@@ -26,10 +26,10 @@ const baseRepo: TGithubRepo = {
 };
 
 describe("GithubRepoCard", () => {
-	it("has correct aria-label on the region", () => {
+	it("has correct aria-label on the article", () => {
 		render(<GithubRepoCard data={baseRepo} />);
 		expect(
-			screen.getByRole("region", { name: "react repository" }),
+			screen.getByRole("article", { name: "react repository" }),
 		).toBeInTheDocument();
 	});
 
@@ -71,5 +71,35 @@ describe("GithubRepoCard", () => {
 			.closest("p")
 			?.querySelector("[aria-hidden='true']");
 		expect(dot).toBeInTheDocument();
+	});
+
+	it("renders stargazers count", () => {
+		render(<GithubRepoCard data={baseRepo} />);
+		expect(screen.getByText("1000")).toBeInTheDocument();
+	});
+
+	it("shows Popular badge when stargazers_count exceeds 50", () => {
+		render(<GithubRepoCard data={baseRepo} />);
+		expect(screen.getByText("Popular")).toBeInTheDocument();
+	});
+
+	it("hides Popular badge when stargazers_count is 50 or fewer", () => {
+		render(<GithubRepoCard data={{ ...baseRepo, stargazers_count: 50 }} />);
+		expect(screen.queryByText("Popular")).not.toBeInTheDocument();
+	});
+
+	it("shows language row when language is null but stargazers_count is present", () => {
+		render(<GithubRepoCard data={{ ...baseRepo, language: null, stargazers_count: 1000 }} />);
+		expect(screen.getByText("1000")).toBeInTheDocument();
+	});
+
+	it("shows license badge when license spdx_id is present", () => {
+		render(<GithubRepoCard data={{ ...baseRepo, license: { spdx_id: "MIT" } as TGithubRepo["license"] }} />);
+		expect(screen.getByText("MIT")).toBeInTheDocument();
+	});
+
+	it("hides license badge when license is null", () => {
+		render(<GithubRepoCard data={{ ...baseRepo, license: null }} />);
+		expect(screen.queryByText("MIT")).not.toBeInTheDocument();
 	});
 });
