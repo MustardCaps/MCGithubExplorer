@@ -1,8 +1,8 @@
 import { StarIcon } from "lucide-react";
+import { Badge } from "@/components/ui/Badge";
 import { Card, CardContent } from "@/components/ui/Card";
 import { getLanguageColor } from "@/lib/utils";
 import type { TGithubRepo } from "@/types/github";
-import { Badge } from "../ui/badge";
 
 interface IGithubRepoCardProps {
 	data: TGithubRepo;
